@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #003366;
+    /* Azul oscuro */
+}
+
+.navbar .nav-link {
+    color: #FFFFFF;
+    /* Texto blanco */
+}
+
+.navbar .nav-link:hover {
+    opacity: 0.8;
+}
+
+#main-header {
+    background-color: #007BFF;
+    /* Azul vibrante */
+    color: #FFFFFF;
+    /* Texto blanco */
+}
+
+footer {
+    background-color: #003366;
+    /* Gris suave */
+    color: white;
+    /* Texto gris oscuro */
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

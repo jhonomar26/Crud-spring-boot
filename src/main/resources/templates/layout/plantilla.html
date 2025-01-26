@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+    <title>Plantilla</title>
+    <meta charset="UTF-8" />
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="#" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <!-- CSS de Font Awesome -->
+    <link rel="stylesheet" href="#" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!-- JavaScript de Bootstrap (incluye Poppcsser.js) -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</head>
+
+<body>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-sm navbar-dark p-0">
+            <div class="container">
+                <a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo}">Control Clientes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-2">
+                            <a th:href="@{/}" class="nav-link active" th:text="#{barra.titulo}">Inicio</a>
+                        </li>
+                    </ul>
+                    <ul sec:authorize="isAuthenticated()" class="navbar-nav ms-auto">
+                        <li class="nav-item me-3">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span th:text="#{barra.bienvenido}">Bienvenido:</span>
+                                <span sec:authentication="name">Usuario</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" th:action="@{/logout}">
+                                <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                    <i class="fas fa-user-times"></i> [[#{barra.salir}]]
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <section id="main-header" class="py-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>
+                            <i class="fas fa-cog"></i> [[#{plantilla.titulo}]]
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </header>
+    <!-- <footer th:fragment="footer" class="bg-warning text-white mt-5 p-5"> -->
+
+
+
+    <footer th:fragment="footer" class="bg-dark text-white mt-5 py-4">
+        <div class="container">
+            <!-- Row for Language Switcher and Footer Information -->
+            <div class="row">
+                <!-- Language Switcher -->
+                <div class="col-md-6">
+                    <p><strong th:text="#{idioma.cambiar}">Cambiar idioma:</strong></p>
+                    <p>
+                        <a th:href="@{/(lang=es)}" class="text-white me-2"
+                            th:text="#{plantilla.cambiar-espanol}"><strong>ES</strong></a>
+                        |
+                        <a th:href="@{/(lang=en)}" class="text-white ms-2"
+                            th:text="#{plantilla.cambiar-ingles}"><strong>EN</strong></a>
+                    </p>
+                </div>
+
+                <!-- Footer Information -->
+                <div class="col-md-6 text-end">
+                    <p th:text="#{plantilla.pie-pagina}">Derechos reservados</p>
+                </div>
+            </div>
+
+            <!-- Row for User Information -->
+            <div sec:authorize="isAuthenticated()">
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">
+                            <b th:text="#{usuario.titulo}">Usuario:</b>
+                            <span sec:authentication="name">Usuario que hizo login</span><br>
+                            <b th:text="#{roles.titulo}">Roles:</b>
+
+                            <!-- Mostrar solo si el usuario está autenticado -->
+                            <span sec:authentication="principal.authorities">Roles asignados</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
