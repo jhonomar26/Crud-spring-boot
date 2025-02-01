@@ -53,46 +53,44 @@
     <!-- <footer th:fragment="footer" class="bg-warning text-white mt-5 p-5"> -->
 
 
-
-    <footer th:fragment="footer" class="bg-dark text-white mt-5 py-4">
-        <div class="container">
-            <!-- Row for Language Switcher and Footer Information -->
-            <div class="row">
-                <!-- Language Switcher -->
-                <div class="col-md-6">
-                    <p><strong th:text="#{idioma.cambiar}">Cambiar idioma:</strong></p>
-                    <p>
-                        <a th:href="@{/(lang=es)}" class="text-white me-2"
-                            th:text="#{plantilla.cambiar-espanol}"><strong>ES</strong></a>
-                        |
-                        <a th:href="@{/(lang=en)}" class="text-white ms-2"
-                            th:text="#{plantilla.cambiar-ingles}"><strong>EN</strong></a>
-                    </p>
-                </div>
-
-                <!-- Footer Information -->
-                <div class="col-md-6 text-end">
-                    <p th:text="#{plantilla.pie-pagina}">Derechos reservados</p>
-                </div>
-            </div>
-
-            <!-- Row for User Information -->
-            <div sec:authorize="isAuthenticated()">
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p class="mb-0">
-                            <b th:text="#{usuario.titulo}">Usuario:</b>
-                            <span sec:authentication="name">Usuario que hizo login</span><br>
-                            <b th:text="#{roles.titulo}">Roles:</b>
-
-                            <!-- Mostrar solo si el usuario está autenticado -->
-                            <span sec:authentication="principal.authorities">Roles asignados</span>
+        <footer th:fragment="footer" class="bg-dark text-white mt-5 py-4">
+            <div class="container">
+                <!-- Row for Language Switcher and Footer Information -->
+                <div class="row">
+                    <!-- Language Switcher -->
+                    <div class="col-md-6">
+                        <p><strong th:text="#{idioma.cambiar}">Cambiar idioma:</strong></p>
+                        <p>
+                            <a th:href="@{/(lang=es)}" class="text-white me-2"
+                                th:text="#{plantilla.cambiar-espanol}"><strong>ES</strong></a>
+                            |
+                            <a th:href="@{/(lang=en)}" class="text-white ms-2"
+                                th:text="#{plantilla.cambiar-ingles}"><strong>EN</strong></a>
                         </p>
+                    </div>
+        
+                    <!-- Footer Information -->
+                    <div class="col-md-6 text-end">
+                        <p th:text="#{plantilla.pie-pagina}">Derechos reservados</p>
+                    </div>
+                </div>
+        
+                <!-- Row for User Information -->
+                <div sec:authorize="isAuthenticated()">
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="mb-0">
+                                <b th:text="#{usuario.titulo}">Usuario:</b>
+                                <span sec:authentication="name">Usuario que hizo login</span><br>
+                                <b th:text="#{roles.titulo}">Roles:</b>
+                                <span sec:authentication="principal.authorities">Roles asignados</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+        
 
     <!-- Bootstrap and jQuery Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
